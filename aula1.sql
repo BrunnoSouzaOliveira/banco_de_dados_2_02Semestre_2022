@@ -79,3 +79,78 @@ INSERT INTO students(
 );
 
 SELECT * FROM students;
+
+SELECT
+    "Selecting Specific column"
+AS
+    "INFO";
+
+SELECT
+    first_name,
+    last_name,
+    gender
+FROM
+    students;
+
+    SELECT * FROM students;
+
+
+
+
+SELECT
+    "Selecting Specific column - version 2"
+AS
+    "INFO";
+
+SELECT
+    students.first_name,
+    students.last_name,
+    students.gender
+FROM
+    students;
+
+
+
+
+SELECT
+    "Selecting Specific column - version 3"
+AS
+    "INFO";
+
+SELECT
+    aula1.students.first_name,
+    aula1.students.last_name,
+    aula1.students.gender
+FROM
+    aula1.students;
+
+
+
+
+SELECT
+    "Selecting Specific column - version 4"
+AS
+    "INFO";
+
+SELECT
+    aula1.students.first_name as "primeiro_nome",
+    aula1.students.last_name as "ultimo_nome",
+    aula1.students.gender as "genero"
+FROM
+    aula1.students;
+
+
+
+SELECT
+    "Selecting Specific column - version 5"
+AS
+    "INFO";
+
+SELECT
+    students.first_name,
+    students.last_name,
+    students.gender
+FROM
+    students
+WHERE
+    gender = 'M';
