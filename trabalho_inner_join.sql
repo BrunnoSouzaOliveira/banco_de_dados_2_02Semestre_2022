@@ -1,5 +1,8 @@
 USE sakila;
 
+SELECT "Com SubQuery" as "INFO";
+
+
 SELECT
     film.title,
     film.description
@@ -36,10 +39,18 @@ WHERE film.film_id IN (
             )
         )
     )
-)
+);
+
+SELECT "Com INNER JOIN" as "INFO";
     
-    
-    /*address ON city.city_id = address.city_id
+
+SELECT
+    film.title,
+    film.description
+FROM
+    city
+INNER JOIN
+    address ON city.city_id = address.city_id
 INNER JOIN
     customer ON customer.address_id = address.address_id
 INNER JOIN
@@ -49,4 +60,4 @@ INNER JOIN
 INNER JOIN
     film ON film.film_id = inventory.film_id
 WHERE
-    city.city = "Caracas";*/
+    city.city = "Caracas";
