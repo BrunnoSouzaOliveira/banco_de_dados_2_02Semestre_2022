@@ -4,31 +4,32 @@ SELECT "Com SubQuery" as "INFO";
 
 
 SELECT
+    film.film_id,
     film.title,
     film.description
 FROM
     film
 WHERE film.film_id IN (
     SELECT
-        inventory.inventory_id
+        inventory.film_id
     FROM
         inventory
-    WHERE inventory.film_id IN (
+    WHERE inventory.inventory_id IN (
         SELECT
-            rental.customer_id
+            rental.inventory_id
         FROM
             rental
-        WHERE rental.inventory_id IN (
+        WHERE rental.customer_id IN (
             SELECT
-                 customer.address_id
+                 customer.customer_id
             FROM
                 customer
-            WHERE customer.customer_id IN (
+            WHERE customer.address_id IN (
                 SELECT
-                    address.city_id
+                    address.address_id
                 FROM
                     address
-                WHERE address.address_id = (
+                WHERE address.city_id = (
                     SELECT
                         city.city_id
                     FROM
@@ -45,6 +46,7 @@ SELECT "Com INNER JOIN" as "INFO";
     
 
 SELECT
+    film.film_id,
     film.title,
     film.description
 FROM
