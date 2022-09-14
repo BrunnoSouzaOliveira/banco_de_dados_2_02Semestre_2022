@@ -107,7 +107,7 @@ INSERT INTO clientes_produtos(id_clientes,id_produtos) VALUES
 
 /*
 Com subselect, monte query traz o nome do cliente, a empresa do cliente, o nome do produto que o cliente consume, o telefone do cliente e a quantidade do produto em estoque
-Trazer para um conjunto de clientes (veja in) pelo nome. 
+Trazer para um conjunto de clientes (veja in) pelo nome.
 Deve haver um limit de 3 registros.
 */
 SELECT 'Exercicio 1' AS 'Prova de Banco de Dados';
@@ -133,8 +133,8 @@ WHERE
 limit 3;
 
 /*
-Com subselect, monte query traz o nome do cliente, a empresa do cliente, o nome do produto que o cliente consume, o telefone do cliente e a quantidade do produto em estoque - 
-trazer para um conjunto de clientes (veja in) pelo nome. 
+Com subselect, monte query traz o nome do cliente, a empresa do cliente, o nome do produto que o cliente consume, o telefone do cliente e a quantidade do produto em estoque -
+trazer para um conjunto de clientes (veja in) pelo nome.
 Deve haver uma ordenação orientada pela quantidade de produtos sendo essa descendente.
 */
 
@@ -159,3 +159,47 @@ WHERE
             clientes_produtos.id_produtos = produtos.id_produto
     )
 ORDER BY produtos.quantidade DESC;
+
+/*
+Com inner join, monte query traz o nome do cliente, a empresa do cliente, o nome do produto que o cliente consume, o telefone do cliente e a quantidade do produto em estoque -
+trazer para um conjunto de clientes (veja in) pelo nome.
+Deve haver uma ordenação orientada pelo preço de compra (do maior para o menor).
+*/
+
+SELECT 'Exercicio 3' AS 'Prova de Banco de Dados';
+
+SELECT
+    clientes.nome,
+    produtos.id_empresa_prod,
+    produtos.nome_produto,
+    clientes.telefone,
+    produtos.quantidade
+FROM
+    clientes
+INNER JOIN
+    clientes_produtos ON clientes_produtos.id_clientes = clientes.id_clientes
+INNER JOIN
+    produtos ON produtos.id_produto = clientes_produtos.id_produtos
+ORDER BY produtos.preco_de_compra;
+
+/*
+Com left join, monte query traz o nome do cliente, a empresa do cliente, o nome do produto que o cliente consume, o telefone do cliente e a quantidade do produto em estoque -
+trazer para um conjunto de clientes (veja in) pelo nome.
+Deve haver uma ordenação orientada pelo preço de compra (do maior para o menor).
+*/
+
+SELECT 'Exercicio 4' AS 'Prova de Banco de Dados';
+
+SELECT
+    clientes.nome,
+    produtos.id_empresa_prod,
+    produtos.nome_produto,
+    clientes.telefone,
+    produtos.quantidade
+FROM
+    clientes
+LEFT JOIN
+    clientes_produtos ON clientes_produtos.id_clientes = clientes.id_clientes
+LEFT JOIN
+    produtos ON produtos.id_produto = clientes_produtos.id_produtos
+ORDER BY produtos.preco_de_compra;
