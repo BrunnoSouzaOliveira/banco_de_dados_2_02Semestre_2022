@@ -122,7 +122,7 @@ FROM
     clientes,
     produtos
 WHERE
-    clientes.id_clientes IN (
+    clientes.id_clientes = (
         SELECT
             clientes_produtos.id_clientes
         FROM
@@ -200,6 +200,6 @@ FROM
     clientes
 LEFT JOIN
     clientes_produtos ON clientes_produtos.id_clientes = clientes.id_clientes
-INNER JOIN
+LEFT JOIN
     produtos ON produtos.id_produto = clientes_produtos.id_produtos
 ORDER BY produtos.preco_de_compra;
