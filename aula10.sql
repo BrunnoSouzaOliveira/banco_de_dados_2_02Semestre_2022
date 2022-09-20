@@ -81,3 +81,42 @@ as (SELECT
     );
 
 SELECT * FROM transacoes;
+
+SELECT
+    carros.nome_carro,
+    carros.ano,
+    vendedores.nome_vendedor,
+    compradores.nome_comprador
+FROM
+    carros
+INNER JOIN
+    comp_vend_carro ON carros.id_carro = comp_vend_carro.id_carro
+INNER JOIN
+    vendedores ON vendedores.id_vendedor = comp_vend_carro.id_vendedor
+INNER JOIN
+    compradores ON compradores.id_comprador = comp_vend_carro.id_comprador;
+
+CREATE
+    VIEW tudo_com_apelido
+as (
+    SELECT
+        compradores.nome_comprador  as comprador,
+        compradores.sobrenome       as sobrenome_comprador,
+        compradores.cpf             as cpf_comprador,
+        vendedores.nome_vendedor    as vendedor,
+        vendedores.sobrenome        as sobrenome_vendedor,
+        vendedores.cpf              as cpf_vendedor,
+        carros.nome_carro           as carro,
+        carros.modelo               as modelo_carro,
+        carros.ano                  as ano_carro
+    FROM
+        carros
+    INNER JOIN
+        comp_vend_carro ON carros.id_carro = comp_vend_carro.id_carro
+    INNER JOIN
+        vendedores ON vendedores.id_vendedor = comp_vend_carro.id_vendedor
+    INNER JOIN
+        compradores ON compradores.id_comprador = comp_vend_carro.id_comprador
+    );
+
+    SELECT * FROM tudo_com_apelido;
