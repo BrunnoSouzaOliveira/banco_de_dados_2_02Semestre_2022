@@ -1,6 +1,30 @@
 USE sakila;
 
-SELECT "Com SubQuery" as "INFO";
+SELECT "Com INNER JOIN" as "INFO";
+
+SELECT
+    film.film_id,
+    customer.first_name,
+    film.title,
+    film.description
+FROM
+    city
+INNER JOIN
+    address ON city.city_id = address.city_id
+INNER JOIN
+    customer ON customer.address_id = address.address_id
+INNER JOIN
+    rental ON rental.customer_id = customer.customer_id
+INNER JOIN
+    inventory ON inventory.inventory_id = rental.inventory_id
+INNER JOIN
+    film ON film.film_id = inventory.film_id
+WHERE
+    city.city = "Caracas"
+GROUP BY film.film_id;
+
+
+/*SELECT "Com SubQuery" as "INFO";
 
 
 SELECT
@@ -40,26 +64,4 @@ WHERE film.film_id IN (
             )
         )
     )
-);
-
-SELECT "Com INNER JOIN" as "INFO";
-    
-
-SELECT
-    film.film_id,
-    film.title,
-    film.description
-FROM
-    city
-INNER JOIN
-    address ON city.city_id = address.city_id
-INNER JOIN
-    customer ON customer.address_id = address.address_id
-INNER JOIN
-    rental ON rental.customer_id = customer.customer_id
-INNER JOIN
-    inventory ON inventory.inventory_id = rental.inventory_id
-INNER JOIN
-    film ON film.film_id = inventory.film_id
-WHERE
-    city.city = "Caracas";
+);*/
