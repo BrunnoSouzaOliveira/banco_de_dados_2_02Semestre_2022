@@ -65,3 +65,98 @@ WHERE film.film_id IN (
         )
     )
 );*/
+
+SELECT "Codigo do Germano" as "INFO";
+
+SELECT
+    filme.title
+FROM
+    city as cidade,
+    address as endereco,
+    customer as cliente,
+    rental as aluguel,
+    inventory as inventario,
+    film as filme
+INNER JOIN
+    city on cidade.city_id = endereco.city_id
+INNER JOIN
+    address on endereco.address_id = cliente.address_id
+INNER JOIN
+    customer on cliente.customer_id = aluguel.customer_id
+INNER JOIN
+    rental on aluguel.inventory_id = inventario.inventory_id
+INNER JOIN
+    inventory on inventario.film_id = filme.film_id
+WHERE
+    cidade.city = "Caracas";
+
+    
+SELECT "Codigo alterado 1" as "INFO";
+
+SELECT
+    filme.title
+FROM
+    film as filme
+INNER JOIN
+    inventory as inventario on inventario.film_id = filme.film_id
+INNER JOIN
+    rental as aluguel on aluguel.inventory_id = inventario.inventory_id
+INNER JOIN
+    customer as cliente on cliente.customer_id = aluguel.customer_id
+INNER JOIN
+    address as endereco on endereco.address_id = cliente.address_id
+INNER JOIN
+    city as cidade on cidade.city_id = endereco.city_id
+WHERE
+    city = "Caracas";
+
+SELECT "Codigo alterado 2" as "INFO";
+
+SELECT
+    filme.title
+FROM
+    film as filme,
+    inventory as inventario,
+    rental as aluguel,
+    customer as cliente,
+    address as endereco,
+    city as cidade
+INNER JOIN
+    inventory on inventario.film_id = filme.film_id
+INNER JOIN
+    rental on aluguel.inventory_id = inventario.inventory_id
+INNER JOIN
+    customer on cliente.customer_id = aluguel.customer_id
+INNER JOIN
+    address on endereco.address_id = cliente.address_id
+INNER JOIN
+    city on cidade.city_id = endereco.city_id
+WHERE
+    cidade.city = "Caracas";
+
+    
+SELECT "Codigo alterado 3" as "INFO";
+
+SELECT
+    filme.title
+FROM
+    city as cidade,
+    address as endereco,
+    customer as cliente,
+    rental as aluguel,
+    inventory as inventario,
+    film as filme
+INNER JOIN
+    city on cidade.city_id = endereco.city_id
+INNER JOIN
+    address on endereco.address_id = cliente.address_id
+INNER JOIN
+    customer on cliente.customer_id = aluguel.customer_id
+INNER JOIN
+    rental on aluguel.inventory_id = inventario.inventory_id
+INNER JOIN
+    inventory on inventario.film_id = filme.film_id
+INNER JOIN
+    film on filme.film_id = inventario.film_id
+WHERE
+    cidade.city = "Caracas";
