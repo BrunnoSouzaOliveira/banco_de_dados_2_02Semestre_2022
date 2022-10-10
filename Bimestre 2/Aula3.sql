@@ -28,7 +28,7 @@ SELECT * FROM musics;
 SET autocommit=0;
 
 START TRANSACTION;
-    ALTER TABLE musics ADD good TINYINT;
+    ALTER TABLE musics ADD good BOOLEAN;
 
     UPDATE musics SET good = 1 WHERE band IN ('Imagine Dragons','Gorillaz','SonReal','Poor Mans Poison','BoyWithUke','Twenty One Pilots');
     UPDATE musics SET good = 0 WHERE band = 'Anitta';
