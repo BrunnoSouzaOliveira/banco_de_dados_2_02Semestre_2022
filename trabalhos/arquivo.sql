@@ -51,10 +51,6 @@ SELECT "AFTER DELETE ROW OF ultimo_nome TABLE" AS 'LOG';
 
 SELECT * FROM ultimo_nome;
 
-ROLLBACK;
-
-SELECT * FROM ultimo_nome;
-
 --Insere na segunda tabela o seguinte: '088.000.999-99' como cpf e 1 como id_(nome da segunda tabela)
 
 SELECT "TRIGGER" AS 'LOG';
